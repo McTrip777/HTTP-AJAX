@@ -9,9 +9,8 @@ constructor(props){
         email:'',
     }
 }
-    handleChanges = event =>{
-        console.log(event.target.value)
-        this.setState({[event.target.name]: event.target.value
+    handleChanges = e =>{
+        this.setState({[e.target.name]: e.target.value
         });
     };
     submitItem = e =>{
@@ -41,7 +40,7 @@ constructor(props){
         <form className='form' onSubmit={this.submitFriend}>
             <input
                 className='input'
-                type="text"
+                type="number"
                 value={age}
                 name="age"
                 placeholder="Insert Friends Age"
@@ -58,7 +57,7 @@ constructor(props){
                 onChange={this.handleChanges}
             /> 
         </form>
-        <button className='buttonAdd' type="submit">+</button>
+        <button className='buttonAdd' onClick={this.submitFriend} type="submit">+</button>
       </div>
     )
   }
