@@ -23,12 +23,31 @@ class App extends Component {
       });
   }
 
+  newFriend = (ev,name,age,email) => {
+    ev.preventDefault();
+    // console.log(tasking.target);
+    const newFriend = {
+      name: name,
+      age: age,
+      email:email,
+      };
+    this.setState({
+      friends: [...this.state.friends, newFriend],
+    });
+  };
+
   render() {
+    const {name, age, email} = this.state
     return (
       <div className="App">
         <div className="formSection">
           <h2>Add a Friend Here!</h2>
-          <FriendForm />
+          <FriendForm 
+          newFriend={this.newFriend}
+          name={name}
+          age={age}
+          email={email}
+          />
         </div>
         <FriendsList friends={this.state.friends}/>
       </div>
