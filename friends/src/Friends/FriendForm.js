@@ -10,33 +10,40 @@ constructor(props){
             email:'',
     }}
 }
-    handleChanges = e =>{
-        this.setState({
+    handleChanges = e => {
+        e.persist()
+        // const ageValue = e.target.value;
+        // if (e.target.name === 'age'){
+        //     ageValue = Number('age')
+        // }
+
+        let value = e.target.value;
+        if (e.target.name === 'age') {
+          value = Number(value);
+        }
+        this.setState(prevState => ({
           friend: {
-              ...this.state.friend,
+              ...prevState.friend,
             [e.target.name]: e.target.value
           }
-        });
+        }));
     };
-    inputFriend = e => {
-        e.preventDefault();
-        this.props.inputFriend(this.state.friend)
-    }
+
     submitFriend = e =>{
         this.setState({
             name: '',
             age: '',
             email:'',
         });
-        const {name, age, email} = this.state;
-        this.props.newFriend(e, name, age, email)
+        this.props.inputFriend(e, this.state.friend)
   }
 
   render() {
-    const {name, age, email} = this.state;
+    const {name, age, email} = this.state.friend;
     return (
       <div className="allForms">
-        <form className='form' onSubmit={this.submitFriend}>
+        <form className='form' 
+        onSubmit={this.submitFriend}>
             <input
                 className='input'
                 type="text"
@@ -64,7 +71,10 @@ constructor(props){
                 onChange={this.handleChanges}
             /> 
         </form>
-        <button className='buttonAdd' onClick={this.submitFriend} type="submit">+</button>
+        <button 
+        className='buttonAdd' 
+        onClick={this.submitFriend} 
+        type="submit">+</button>
       </div>
     )
   }
