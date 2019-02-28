@@ -18,7 +18,7 @@ constructor(props){
 
     submitFriend = e => {
     this.props.inputFriend(e, this.state.friend)
-        this.setState({ name: '', age: '', email:'' });
+        this.setState({ friend: {name: '', age: '', email:'' }});
   }
 
   render() {
