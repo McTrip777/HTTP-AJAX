@@ -25,6 +25,7 @@ constructor(props){
     const {name, age, email} = this.state.friend;
     return (
       <div className="allForms">
+      <h2>Add a Friend Here!</h2>
         <form className='form' 
         onSubmit={this.submitFriend}>
             <input

@@ -3,7 +3,8 @@ import './App.css';
 import axios from 'axios';
 import FriendsList from './Friends/FriendsList';
 import FriendForm from './Friends/FriendForm';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import NavBar from './Friends/NavBar';
+import {  Route } from 'react-router-dom';
 
 class App extends Component {
   constructor(){
@@ -55,13 +56,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+          <NavBar />
         <div className="formSection">
-          <h2>Add a Friend Here!</h2>
+          <Route exact path='/' render={props => 
           <FriendForm 
-          inputFriend={this.inputFriend}
+          inputFriend={this.inputFriend} 
+          {...props}/>}
           />
         </div>
-        <FriendsList deleteFriend ={this.deleteFriend} friends={this.state.friends}/>
+          <Route path='/friends' render={props => 
+          <FriendsList 
+          deleteFriend ={this.deleteFriend} 
+          friends={this.state.friends} 
+          {...props}/>}
+          />
       </div>
     );
   }
