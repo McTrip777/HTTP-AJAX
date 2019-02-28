@@ -4,16 +4,25 @@ class FriendForm extends Component {
 constructor(props){
     super(props);
     this.state = {
-        name:'',
-        age: '',
-        email:'',
-    }
+        friend:{
+            name:'',
+            age: '',
+            email:'',
+    }}
 }
     handleChanges = e =>{
-        this.setState({[e.target.name]: e.target.value
+        this.setState({
+          friend: {
+              ...this.state.friend,
+            [e.target.name]: e.target.value
+          }
         });
     };
-    submitItem = e =>{
+    inputFriend = e => {
+        e.preventDefault();
+        this.props.inputFriend(this.state.friend)
+    }
+    submitFriend = e =>{
         this.setState({
             name: '',
             age: '',
@@ -36,8 +45,7 @@ constructor(props){
                 placeholder="Insert Friends Name"
                 onChange={this.handleChanges}
             /> 
-        </form> 
-        <form className='form' onSubmit={this.submitFriend}>
+        
             <input
                 className='input'
                 type="number"
@@ -46,8 +54,7 @@ constructor(props){
                 placeholder="Insert Friends Age"
                 onChange={this.handleChanges}
             /> 
-        </form>
-        <form className='form' onSubmit={this.submitFriend}>
+        
             <input
                 className='input'
                 type="text"

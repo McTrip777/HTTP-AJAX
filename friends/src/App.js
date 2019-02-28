@@ -36,17 +36,24 @@ class App extends Component {
     });
   };
 
+  inputFriend = friend => {
+    axios
+      .get('http://localhost:5000/friends', friend)
+      .then(response => {
+        this.setState(() => ({ friends: response.data }));
+      })
+      .catch(err => {
+        console.error('Server Error', err);
+      });
+  }
+
   render() {
-    const {name, age, email} = this.state
     return (
       <div className="App">
         <div className="formSection">
           <h2>Add a Friend Here!</h2>
           <FriendForm 
           newFriend={this.newFriend}
-          name={name}
-          age={age}
-          email={email}
           />
         </div>
         <FriendsList friends={this.state.friends}/>
