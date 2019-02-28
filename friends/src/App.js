@@ -16,8 +16,8 @@ class App extends Component {
   componentDidMount() {
     axios
       .get('http://localhost:5000/friends')
-      .then(response => {
-        this.setState(() => ({ friends: response.data }));
+      .then(res => {
+        this.setState(() => ({ friends: res.data }));
       })
       .catch(err => {
         console.error('Server Error', err);
@@ -37,18 +37,6 @@ class App extends Component {
         console.log(err)
       })
   }
-  // newFriend = (ev,name,age,email) => {
-  //   ev.preventDefault();
-  //   // console.log(tasking.target);
-  //   const newFriend = {
-  //     name: name,
-  //     age: age,
-  //     email: email
-  //     };
-  //   this.setState({
-  //     friends: [...this.state.friends, newFriend],
-  //   });
-  // };
 
   render() {
     return (

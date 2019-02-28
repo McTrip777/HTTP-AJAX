@@ -4,23 +4,10 @@ class FriendForm extends Component {
 constructor(props){
     super(props);
     this.state = {
-        friend:{
-            name:'',
-            age: '',
-            email:'',
-    }}
+        friend:{ name:'', age: '', email:'' }}
 }
     handleChanges = e => {
         e.persist()
-        // const ageValue = e.target.value;
-        // if (e.target.name === 'age'){
-        //     ageValue = Number('age')
-        // }
-
-        let value = e.target.value;
-        if (e.target.name === 'age') {
-          value = Number(value);
-        }
         this.setState(prevState => ({
           friend: {
               ...prevState.friend,
@@ -29,13 +16,9 @@ constructor(props){
         }));
     };
 
-    submitFriend = e =>{
-        this.setState({
-            name: '',
-            age: '',
-            email:'',
-        });
-        this.props.inputFriend(e, this.state.friend)
+    submitFriend = e => {
+    this.props.inputFriend(e, this.state.friend)
+        this.setState({ name: '', age: '', email:'' });
   }
 
   render() {
@@ -52,7 +35,6 @@ constructor(props){
                 placeholder="Insert Friends Name"
                 onChange={this.handleChanges}
             /> 
-        
             <input
                 className='input'
                 type="number"
@@ -61,7 +43,6 @@ constructor(props){
                 placeholder="Insert Friends Age"
                 onChange={this.handleChanges}
             /> 
-        
             <input
                 className='input'
                 type="text"
