@@ -25,9 +25,11 @@ constructor(props){
     const {name, age, email} = this.state.friend;
     return (
       <div className="allForms">
-      <h2>Add a Friend Here!</h2>
+      <h1>Add a Friend Here!</h1>
         <form className='form' 
         onSubmit={this.submitFriend}>
+        <div className='formAlign'>
+            <h2>Name:</h2>
             <input
                 className='input'
                 type="text"
@@ -36,6 +38,9 @@ constructor(props){
                 placeholder="Insert Friends Name"
                 onChange={this.handleChanges}
             /> 
+        </div>
+        <div className='formAlign'>
+            <h2>Age:</h2>
             <input
                 className='input'
                 type="number"
@@ -43,7 +48,10 @@ constructor(props){
                 name="age"
                 placeholder="Insert Friends Age"
                 onChange={this.handleChanges}
-            /> 
+            />
+        </div> 
+        <div className='formAlign'>
+            <h2>Email:</h2>
             <input
                 className='input'
                 type="text"
@@ -51,7 +59,8 @@ constructor(props){
                 name="email"
                 placeholder="Insert Friends Email"
                 onChange={this.handleChanges}
-            /> 
+            />
+        </div> 
         </form>
         <button 
         className='buttonAdd' 
